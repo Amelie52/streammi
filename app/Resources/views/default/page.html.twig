@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block nav %}
+    {{ parent() }}
+
+{% endblock %}
+
+{% block body %}
+
+        <h1>Hello World !</h1>
+        <a href="{{ path('page2') }}">Page 2</a>
+
+{% endblock %}

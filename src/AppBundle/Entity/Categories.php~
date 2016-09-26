@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Categories
 {
     /**
+     * ORM\OneToMany(targetEntity="AppBundle\Entity\Programmes", mappedBy="categories")
+     */
+
+    private $programmes;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -63,4 +69,3 @@ class Categories
         return $this->libelle;
     }
 }
-

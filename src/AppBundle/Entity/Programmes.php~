@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Programmes
 {
     /**
+     * ORM\ManyToOne(targetEntity="AppBundle\Entity\Categories", inversedBy="programmes")
+     */
+
+    private $categories;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -125,4 +131,3 @@ class Programmes
         return $this->url;
     }
 }
-

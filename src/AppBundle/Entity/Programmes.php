@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Programmes
 {
     /**
-     * ORM\ManyToOne(targetEntity="AppBundle\Entity\Categories", inversedBy="programmes")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categories", inversedBy="programmes")
      */
 
     private $categories;

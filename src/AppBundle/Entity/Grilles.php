@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Grilles
 {
     /**
-     * ORM\ManyToMany(targetEntity="AppBundle\Entity\Programmes")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Programmes")
      */
 
     private $programmes;

@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Categories
 {
     /**
-     * ORM\OneToMany(targetEntity="AppBundle\Entity\Programmes", mappedBy="categories")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Programmes", mappedBy="categories")
      */
 
     private $programmes;

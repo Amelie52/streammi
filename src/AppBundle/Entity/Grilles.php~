@@ -13,6 +13,12 @@ use Doctrine\ORM\Mapping as ORM;
 class Grilles
 {
     /**
+     * ORM\ManyToMany(targetEntity="AppBundle\Entity\Programmes")
+     */
+
+    private $programmes;
+
+    /**
      * @var int
      *
      * @ORM\Column(name="id", type="integer")
@@ -125,4 +131,3 @@ class Grilles
         return $this->jour;
     }
 }
-

@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Grilles
 {
     /**
-     * ORM\ManyToMany(targetEntity="AppBundle\Entity\Programmes")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Programmes")
      */
 
     private $programmes;
@@ -129,5 +129,46 @@ class Grilles
     public function getJour()
     {
         return $this->jour;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->programmes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add programme
+     *
+     * @param \AppBundle\Entity\Programmes $programme
+     *
+     * @return Grilles
+     */
+    public function addProgramme(\AppBundle\Entity\Programmes $programme)
+    {
+        $this->programmes[] = $programme;
+
+        return $this;
+    }
+
+    /**
+     * Remove programme
+     *
+     * @param \AppBundle\Entity\Programmes $programme
+     */
+    public function removeProgramme(\AppBundle\Entity\Programmes $programme)
+    {
+        $this->programmes->removeElement($programme);
+    }
+
+    /**
+     * Get programmes
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProgrammes()
+    {
+        return $this->programmes;
     }
 }

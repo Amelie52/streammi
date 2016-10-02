@@ -13,10 +13,16 @@ use Doctrine\ORM\Mapping as ORM;
 class Programmes
 {
     /**
-     * ORM\ManyToOne(targetEntity="AppBundle\Entity\Categories", inversedBy="programmes")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categories", inversedBy="programmes")
      */
 
-    private $categories;
+    private $categorie;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Creneau_Programme", mappedBy="programmes")
+     */
+
+    private $creneau_programme;
 
     /**
      * @var int
@@ -26,28 +32,6 @@ class Programmes
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="duree", type="time")
-     */
-    private $duree;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="titre", type="string", length=255)
-     */
-    private $titre;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=255)
-     */
-    private $url;
-
 
     /**
      * Get id
@@ -60,74 +44,26 @@ class Programmes
     }
 
     /**
-     * Set duree
+     * Set categories
      *
-     * @param \DateTime $duree
+     * @param \AppBundle\Entity\Categories $categories
      *
      * @return Programmes
      */
-    public function setDuree($duree)
+    public function setCategories(\AppBundle\Entity\Categories $categories = null)
     {
-        $this->duree = $duree;
+        $this->categories = $categories;
 
         return $this;
     }
 
     /**
-     * Get duree
+     * Get categories
      *
-     * @return \DateTime
+     * @return \AppBundle\Entity\Categories
      */
-    public function getDuree()
+    public function getCategories()
     {
-        return $this->duree;
-    }
-
-    /**
-     * Set titre
-     *
-     * @param string $titre
-     *
-     * @return Programmes
-     */
-    public function setTitre($titre)
-    {
-        $this->titre = $titre;
-
-        return $this;
-    }
-
-    /**
-     * Get titre
-     *
-     * @return string
-     */
-    public function getTitre()
-    {
-        return $this->titre;
-    }
-
-    /**
-     * Set url
-     *
-     * @param string $url
-     *
-     * @return Programmes
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
+        return $this->categories;
     }
 }

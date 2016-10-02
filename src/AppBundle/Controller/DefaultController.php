@@ -20,7 +20,12 @@ class DefaultController extends Controller
         return $this->render('default/page.html.twig');
     }
 
-    public function createAction(){
+    /**
+     * @route("/page3", name="page3")
+     */
+
+
+   /* public function createAction(){
        $categories = new Categories();
         $categories->setLibelle('Culture générale');
 
@@ -28,7 +33,10 @@ class DefaultController extends Controller
         $em->persist($categories);
 
         $em->flush();
-    }
+
+        return $this->render('default/page.html.twig');
+
+    }*/
 
 
 

@@ -75,5 +75,52 @@ class Creneau_programme
     {
         return $this->progOrdre;
     }
-}
 
+    /**
+     * Set programme
+     *
+     * @param \AppBundle\Entity\Programme $programme
+     *
+     * @return Creneau_programme
+     */
+    public function setProgramme(\AppBundle\Entity\Programme $programme = null)
+    {
+        $this->programme = $programme;
+
+        return $this;
+    }
+
+    /**
+     * Get programme
+     *
+     * @return \AppBundle\Entity\Programme
+     */
+    public function getProgramme()
+    {
+        return $this->programme;
+    }
+
+    /**
+     * Set creneau
+     *
+     * @param \AppBundle\Entity\Creneau $creneau
+     *
+     * @return Creneau_programme
+     */
+    public function setCreneau(\AppBundle\Entity\Creneau $creneau = null)
+    {
+        $this->creneau = $creneau;
+
+        return $this;
+    }
+
+    /**
+     * Get creneau
+     *
+     * @return \AppBundle\Entity\Creneau
+     */
+    public function getCreneau()
+    {
+        return $this->creneau;
+    }
+}

@@ -12,14 +12,14 @@ use AppBundle\Form\CategoriesType;
 /**
  * Categories controller.
  *
- * @Route("/categories")
+ * @Route("/admin/categories")
  */
 class CategoriesController extends Controller
 {
     /**
      * Lists all Categories entities.
      *
-     * @Route("", name="categories_index")
+     * @Route("/", name="categories_index")
      * @Method("GET")
      */
     public function indexAction()

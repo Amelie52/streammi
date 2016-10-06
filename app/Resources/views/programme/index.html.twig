@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Programme list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Progtitre</th>
+                <th>Progduree</th>
+                <th>Progurl</th>
+                <th>Progminia</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for programme in programmes %}
+            <tr>
+                <td><a href="{{ path('programme_show', { 'id': programme.id }) }}">{{ programme.id }}</a></td>
+                <td>{{ programme.progTitre }}</td>
+                <td>{% if programme.progDuree %}{{ programme.progDuree|date('H:i:s') }}{% endif %}</td>
+                <td>{{ programme.progUrl }}</td>
+                <td>{{ programme.progMinia }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('programme_show', { 'id': programme.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('programme_edit', { 'id': programme.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('programme_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

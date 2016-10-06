@@ -222,4 +222,14 @@ class Programme
     {
         return $this->categorie;
     }
+
+    /**
+     * Remove creneauProgramme
+     *
+     * @param \AppBundle\Entity\Creneau_programme $creneauProgramme
+     */
+    public function removeCreneauProgramme(\AppBundle\Entity\Creneau_programme $creneauProgramme)
+    {
+        $this->creneau_programme->removeElement($creneauProgramme);
+    }
 }

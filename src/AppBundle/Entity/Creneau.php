@@ -12,18 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Creneau
 {
-
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Creneau_Programme", mappedBy="creneau")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Creneau_programme", mappedBy="creneau")
      */
 
     private $creneau_programme;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categories", inversedBy="creneau")
-     */
-
-    private $categorie;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Grille", inversedBy="creneau")
@@ -31,6 +24,11 @@ class Creneau
 
     private $grille;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Categories", inversedBy="creneau")
+     */
+
+    private $categorie;
 
 
     /**
@@ -125,15 +123,25 @@ class Creneau
     /**
      * Add creneauProgramme
      *
-     * @param \AppBundle\Entity\Creneau_Programme $creneauProgramme
+     * @param \AppBundle\Entity\Creneau_programme $creneauProgramme
      *
      * @return Creneau
      */
-    public function addCreneauProgramme(\AppBundle\Entity\Creneau_Programme $creneauProgramme)
+    public function addCreneauProgramme(\AppBundle\Entity\Creneau_programme $creneauProgramme)
     {
         $this->creneau_programme[] = $creneauProgramme;
 
         return $this;
+    }
+
+    /**
+     * Remove creneauProgramme
+     *
+     * @param \AppBundle\Entity\Creneau_programme $creneauProgramme
+     */
+    public function removeCreneauProgramme(\AppBundle\Entity\Creneau_programme $creneauProgramme)
+    {
+        $this->creneau_programme->removeElement($creneauProgramme);
     }
 
     /**
@@ -144,6 +152,30 @@ class Creneau
     public function getCreneauProgramme()
     {
         return $this->creneau_programme;
+    }
+
+    /**
+     * Set grille
+     *
+     * @param \AppBundle\Entity\Grille $grille
+     *
+     * @return Creneau
+     */
+    public function setGrille(\AppBundle\Entity\Grille $grille = null)
+    {
+        $this->grille = $grille;
+
+        return $this;
+    }
+
+    /**
+     * Get grille
+     *
+     * @return \AppBundle\Entity\Grille
+     */
+    public function getGrille()
+    {
+        return $this->grille;
     }
 
     /**
@@ -168,39 +200,5 @@ class Creneau
     public function getCategorie()
     {
         return $this->categorie;
-    }
-
-    /**
-     * Set grille
-     *
-     * @param \AppBundle\Entity\Grilles $grille
-     *
-     * @return Creneau
-     */
-    public function setGrille(\AppBundle\Entity\Grilles $grille = null)
-    {
-        $this->grille = $grille;
-
-        return $this;
-    }
-
-    /**
-     * Get grille
-     *
-     * @return \AppBundle\Entity\Grilles
-     */
-    public function getGrille()
-    {
-        return $this->grille;
-    }
-
-    /**
-     * Remove creneauProgramme
-     *
-     * @param \AppBundle\Entity\Creneau_Programme $creneauProgramme
-     */
-    public function removeCreneauProgramme(\AppBundle\Entity\Creneau_Programme $creneauProgramme)
-    {
-        $this->creneau_programme->removeElement($creneauProgramme);
     }
 }

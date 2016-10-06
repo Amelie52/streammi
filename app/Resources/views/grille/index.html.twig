@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Grille list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Grilledate</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for grille in grilles %}
+            <tr>
+                <td><a href="{{ path('grille_show', { 'id': grille.id }) }}">{{ grille.id }}</a></td>
+                <td>{% if grille.grilleDate %}{{ grille.grilleDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('grille_show', { 'id': grille.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('grille_edit', { 'id': grille.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('grille_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

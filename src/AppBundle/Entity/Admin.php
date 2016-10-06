@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * Admin
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="admin")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\AdminRepository")
  */
-class Admin
+class Admin extends BaseUser
 {
     /**
      * @var int
@@ -19,22 +20,7 @@ class Admin
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="admin_pseudo", type="string", length=255)
-     */
-    private $adminPseudo;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="admin_mdp", type="string", length=255)
-     */
-    private $adminMdp;
-
+    protected $id;
 
     /**
      * Get id
@@ -46,51 +32,4 @@ class Admin
         return $this->id;
     }
 
-    /**
-     * Set adminPseudo
-     *
-     * @param string $adminPseudo
-     *
-     * @return Admin
-     */
-    public function setAdminPseudo($adminPseudo)
-    {
-        $this->adminPseudo = $adminPseudo;
-
-        return $this;
-    }
-
-    /**
-     * Get adminPseudo
-     *
-     * @return string
-     */
-    public function getAdminPseudo()
-    {
-        return $this->adminPseudo;
-    }
-
-    /**
-     * Set adminMdp
-     *
-     * @param string $adminMdp
-     *
-     * @return Admin
-     */
-    public function setAdminMdp($adminMdp)
-    {
-        $this->adminMdp = $adminMdp;
-
-        return $this;
-    }
-
-    /**
-     * Get adminMdp
-     *
-     * @return string
-     */
-    public function getAdminMdp()
-    {
-        return $this->adminMdp;
-    }
 }

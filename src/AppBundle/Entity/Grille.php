@@ -60,6 +60,15 @@ class Grille
     }
 
     /**
+     * toString
+     * @return string
+     */
+    public function __toString(){
+
+        return $this->grilleDate->format('d/m/Y');
+    }
+
+    /**
      * Get grilleDate
      *
      * @return \DateTime
@@ -75,6 +84,7 @@ class Grille
     {
         $this->creneau = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
 
     /**
      * Add creneau

@@ -30,6 +30,7 @@ class CategoriesController extends Controller
 
         return $this->render('categories/index.html.twig', array(
             'categories' => $categories,
+
         ));
     }
 

@@ -2,42 +2,44 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use AppBundle\Entity\Categories;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use AppBundle\Entity\Grille;
+use AppBundle\Form\GrilleType;
+use AppBundle\Entity\Creneau;
+use AppBundle\Form\CreneauType;
 
+/**
+ * Default controller.
+ *
+ * @Route("/admin/home")
+ */
 class DefaultController extends Controller
 {
-
     /**
-     * @route("/page2", name="page2")
+     * Lists all Grille entities.
+     *
+     * @Route("/", name="index")
+     * @Method("GET")
      */
-
-    public function pageAction()
+    public function indexAction()
     {
-        //replace this example code
-        return $this->render('default/page.html.twig');
-    }
-
-    /**
-     * @route("/page3", name="page3")
-     */
-
-
-   /* public function createAction(){
-       $categories = new Categories();
-        $categories->setLibelle('Culture générale');
-
         $em = $this->getDoctrine()->getManager();
-        $em->persist($categories);
 
-        $em->flush();
+        $grilles = $em->getRepository('AppBundle:Grille')->findAll();
 
-        return $this->render('default/page.html.twig');
+        return $this->render('default/index.html.twig', array(
+            'grilles' => $grilles,
+        ));
 
-    }*/
+        $creneaus = $em->getRepository('AppBundle:Creneau')->findAll();
 
+        return $this->render('default/index.html.twig', array(
+            'creneaus' => $creneaus,
+        ));
 
+    }
 
 }

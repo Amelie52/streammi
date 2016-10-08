@@ -31,6 +31,7 @@ class GrilleController extends Controller
         return $this->render('grille/index.html.twig', array(
             'grilles' => $grilles,
         ));
+
     }
 
     /**

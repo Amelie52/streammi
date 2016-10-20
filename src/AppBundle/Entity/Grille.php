@@ -14,6 +14,7 @@ class Grille
 {
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Creneau", mappedBy="grille")
+     * @ORM\OrderBy({"creneauDbt"="ASC"})
      */
 
     private $creneau;

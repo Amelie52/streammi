@@ -27,9 +27,11 @@
         </table>
             <br>
 
-
+            {% if category.programme|length>0 %}
 
         <h2>Programmes associés à la catégorie</h2>
+
+
 
             <table class="catego_tab prog_catego_tab bb_tab">
                 <thead>
@@ -49,14 +51,18 @@
                     </tr>
                 </tbody>
             {#{dump(categorie)}#}
-                   {# {% if programme in category.programme is empty %}
-                        {{ form_start(delete_form) }}
-                        <input type="submit" id="submit_grey" value="Supprimer">
-                        {{ form_end(delete_form) }}<br>
-                    {% endif %}#}
+
         {% endfor %}
+
+
+                {% else %}
+                {{ form_start(delete_form) }}
+                <input type="submit" id="submit_grey" value="Supprimer">
+                {{ form_end(delete_form) }}<br>
+
             </table>
-        <p></p>
+            {% endif %}
+
 
             <a class="btn btn-default" href="{{ path('categories_index') }}">Revenir aux categories</a><br><br>
 

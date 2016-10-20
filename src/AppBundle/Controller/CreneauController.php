@@ -27,7 +27,7 @@ class CreneauController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $creneaus = $em->getRepository('AppBundle:Creneau')->findAll();
+        $creneaus = $em->getRepository('AppBundle:Creneau')->findBy(array(), array('creneauDbt' => 'ASC')); // on l'utilise pas dans le projet
 
         return $this->render('creneau/index.html.twig', array(
             'creneaus' => $creneaus,

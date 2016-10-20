@@ -10,4 +10,5 @@ namespace AppBundle\Repository;
  */
 class GrilleRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

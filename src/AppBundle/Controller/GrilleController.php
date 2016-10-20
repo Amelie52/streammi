@@ -120,7 +120,7 @@ class GrilleController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('grille_index');
+        return $this->redirectToRoute('index');
     }
 
     /**

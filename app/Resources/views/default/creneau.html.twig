@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% block nav %}
+        {{ parent() }}
+    {% endblock %}
+
+    <div class="container contain-n-creneau">
+        <div class="new-creneau carre_base">
+        <h1>Creneau de {% if creneau.creneauDbt %}{{ creneau.creneauDbt|date('H:i') }}{% endif %}h à {% if creneau.creneauFin %}{{ creneau.creneauFin|date('H:i') }}{% endif %}h</h1>
+
+    <hr>
+
+        <h2>Liste des programmes</h2>
+
+{#{% for creneau_programme in creneau.creneau_programme %}#}
+
+
+        <table class="show-cren-progr">
+            <thead>
+            <tr>
+                <th class="horaires">Titre</th>
+                <th class="horaires">Durée</th>
+                <th class="horaires">lien</th>
+                <th class="horaires">Actions</th>
+            </tr>
+            </thead>
+
+            {% for programme in creneau.creneauprogramme %}
+            <tbody>
+
+                <tr>
+                    {#<td><a href="{{ path('programme_show', { 'id': programme.programme.id }) }}">{{ programme.programme.id }}</a></td>#}
+                    <td>{{ programme.programme.progTitre }}</td>
+                    <td>{% if programme.programme.progDuree %}{{ programme.programme.progDuree|date('H:i:s') }}{% endif %}</td>
+                    <td>{{ programme.programme.progUrl }}</td>
+                    {#<td>{{ programme.programme.progMinia }}</td>#}
+                    <td>
+                       <a href="{{ path('programme_show', { 'id': programme.programme.id }) }}">Voir</a><br>
+                       <a href="{{ path('programme_edit', { 'id': programme.programme.id }) }}">editer</a>
+                    </td>
+                </tr>
+
+            </tbody>
+            {% endfor %}
+        </table>
+
+
+    <hr>
+                <a class="btn btn-default" href="{{ path('index') }}">Revenir à la grille</a>
+
+                <a  class="btn btn-default" href="{{ path('creneau_edit', { 'id': creneau.id }) }}">Modifier le créneau</a>
+
+                <a class="btn btn-default new-grille" href="{{ path('programme_new') }}">Ajouter un programme</a>
+
+                {{ form_start(delete_form) }}
+                <input type="submit" id="submit_grey" value="Supprimer">
+                {{ form_end(delete_form) }}
+
+        </div>
+    </div>
+
+
+{% endblock %}

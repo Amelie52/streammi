@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Programme
 {
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Creneau_programme", mappedBy="programme")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Creneau_programme", mappedBy="programme", cascade={"remove"})
      */
 
     private $creneau_programme;

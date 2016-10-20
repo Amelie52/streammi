@@ -13,13 +13,14 @@ use Doctrine\ORM\Mapping as ORM;
 class Creneau
 {
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Creneau_programme", mappedBy="creneau")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Creneau_programme", mappedBy="creneau", cascade={"remove"})
      */
 
     private $creneau_programme;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Grille", inversedBy="creneau")
+
      */
 
     private $grille;
@@ -200,5 +201,11 @@ class Creneau
     public function getCategorie()
     {
         return $this->categorie;
+    }
+
+    public function afficheheure()
+    {
+        // TODO: Implement __toString() method.
+        return $this->creneauDbt->format('H:i');
     }
 }

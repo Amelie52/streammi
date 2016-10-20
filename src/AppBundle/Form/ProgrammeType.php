@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class ProgrammeType extends AbstractType
 {
@@ -21,7 +22,7 @@ class ProgrammeType extends AbstractType
             ->add('progUrl')
             ->add('progMinia')
             ->add('categorie')
-        ;
+            ;
     }
     
     /**

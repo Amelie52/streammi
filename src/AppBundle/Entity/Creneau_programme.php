@@ -15,12 +15,15 @@ class Creneau_programme
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Programme", inversedBy="creneau_programme")
+     * @ORM\JoinColumn(name="programme_id", referencedColumnName="id", onDelete="CASCADE")
      */
 
     private $programme;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Creneau", inversedBy="creneau_programme")
+     * @ORM\JoinColumn(name="creneau_id", referencedColumnName="id", onDelete="CASCADE")
+
      */
 
     private $creneau;

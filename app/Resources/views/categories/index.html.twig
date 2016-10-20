@@ -1,43 +1,49 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Categories list</h1>
+    {% block nav %}
+        {{ parent() }}
+    {% endblock %}
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Catelibelle</th>
-                <th>Catevideo</th>
-                <th>Catesynthe</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            <tr>
-                <td><a href="{{ path('categories_show', { 'id': category.id }) }}">{{ category.id }}</a></td>
-                <td>{{ category.cateLibelle }}</td>
-                <td>{{ category.cateVideo }}</td>
-                <td>{{ category.cateSynthe }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('categories_show', { 'id': category.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('categories_edit', { 'id': category.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('categories_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+
+    <div class="container">
+
+        <header class="container">
+            <div class="logo"></div>
+            <div class="titres">
+                <h1 class="titre">STREAMMI<span class="titre_1">ADMIN</span></h1>
+                <h2 class="sous_titre">Liste des catégories</h2>
+            </div>
+        </header>
+
+        <div class="carre_base"><br>
+
+        <table class="catego_tab ">
+            <thead>
+                <tr>
+                    <th class="horaires">Libellé</th>
+                    <th class="horaires">Video</th>
+                    <th class="horaires">Synthé</th>
+                    <th class="horaires">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.cateLibelle }}</td>
+                    <td>{{ category.cateVideo }}</td>
+                    <td>{{ category.cateSynthe }}</td>
+                    <td>
+                       <a href="{{ path('categories_show', { 'id': category.id }) }}">Voir</a><br>
+                       <a href="{{ path('categories_edit', { 'id': category.id }) }}">Editer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a class="btn btn-default new-grille" href="{{ path('categories_new') }}">Créer une nouvelle catégorie</a>
+        </div>
+    </div>
 {% endblock %}

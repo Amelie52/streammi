@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Creneau_programme;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -45,9 +46,31 @@ class ProgrammeController extends Controller
         $form = $this->createForm('AppBundle\Form\ProgrammeType', $programme);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($programme);
+
+
+            $creneau = $em->getRepository('AppBundle\Entity\Creneau')->find($request->request->get('creneau'));
+
+            $c_ps = $this->getDoctrine()->getRepository('AppBundle:Creneau_programme')->findBy(array('creneau' => $creneau->getId()), array('progOrdre' => 'ASC'));
+            $last = 0;
+            foreach ($c_ps as $cps)
+            {
+                $last = $cps->getProgOrdre();
+            }
+            $last++;
+
+            $c_p = new Creneau_programme();
+            $c_p->setCreneau($creneau);
+            $c_p->setProgOrdre($last);
+            $c_p->setProgramme($programme);
+
+            $em->persist($c_p);
+
+            //$programme->addCreneauProgramme($c_p);
+            //$em->persist($programme);
+
             $em->flush();
 
             return $this->redirectToRoute('programme_show', array('id' => $programme->getId()));
@@ -55,6 +78,7 @@ class ProgrammeController extends Controller
 
         return $this->render('programme/new.html.twig', array(
             'programme' => $programme,
+            'creneaux' => $this->getDoctrine()->getRepository('AppBundle:Creneau')->findAll(),
             'form' => $form->createView(),
         ));
     }
@@ -119,7 +143,9 @@ class ProgrammeController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('programme_index');
+        return $this->redirectToRoute('index');
+//        return $this->redirect($_SERVER['HTTP_REFERER']);
+
     }
 
     /**

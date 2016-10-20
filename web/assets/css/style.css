@@ -1,0 +1,172 @@
+
+
+header{
+    margin-top: 50px;
+}
+
+.logo{
+    background: url('../img/logo.png');
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 100px;
+    float: left;
+    background-size: 75%;
+    
+}
+
+.titres{
+    float: left;
+}
+
+.titre{
+    font-weight: 700;
+    color: #35393c;
+    margin: 0;
+}
+
+.titre_1{
+   color: #ee6f71;
+}
+
+.sous_titre{
+    margin-top: -10px;;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.boutons{
+    clear: both;
+}
+
+.btn{
+    border: none;
+    margin-top: 50px;
+}
+
+#semaine_suivante{
+    float: right;
+}
+
+.table{
+    margin-top: 30px;
+    color:white;
+    text-align: center;
+}
+
+th{
+    color: white;
+    text-align: center;
+    font-weight:lighter;
+    margin:auto;
+}
+
+
+
+.horaires{
+    background-color: #35393c;
+    vertical-align: middle !important;
+    min-width: 80px;
+    padding: 10px;
+}
+
+.jours{
+    background-color: #35393c;
+    
+}
+
+.vide{
+    background-color: #ebebeb;
+    color: #35393c;
+}
+
+.en_cours{
+    background-color: #ee6f71;
+}
+
+.remplie{
+    background-color: #495e73;
+}
+
+.ligne{
+    border: none;
+}
+
+/* ---------- grille --------- */
+
+.new-grille{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* ---------- nouveau creneau --------- */
+
+.contain-n-creneau{
+    display: flex;
+    height: 80vh;
+}
+
+.contain-n-creneau h1{
+    text-align: center;
+}
+
+.carre_base{
+    width: 600px;
+    text-align: center;
+    margin: auto;
+}
+
+.formu{
+    border-radius:5px;
+    background-color: #FF9092;
+    padding: 20px 30px;
+}
+
+/*.new-creneau input, select{
+    width: 30%;
+    height:35px;
+    border-radius: 5px;
+}*/
+
+/*.new-creneau select.heures{
+    width: 45%;
+    height:35px;
+    border-radius: 5px;
+}*/
+
+.new-creneau input[type="submit"]{
+    border-style:none;
+    border-color:none;
+    background-color: #fff;
+    width: 120px;
+    height: 35px;
+    border-radius:5px;
+    margin-top: 10px;
+}
+
+/* ---------- show creneau (avec ses programmes) --------- */
+
+.show-cren-progr{
+    margin: 0 auto;
+}
+
+#submit_grey{
+    background-color: #232323;
+    color: white;
+}
+
+/* ---------- Catégories --------- */
+
+.catego_tab{
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.prog_catego_tab th{
+    width: 200px;
+
+}
+
+.bb_tab td{
+   border-bottom: 1px solid #cecece;
+
+}

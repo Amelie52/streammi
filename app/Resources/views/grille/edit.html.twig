@@ -1,6 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    {% block nav %}
+        {{ parent() }}
+    {% endblock %}
+
     <h1>Grille edit</h1>
 
     {{ form_start(edit_form) }}

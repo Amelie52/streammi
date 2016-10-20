@@ -8,6 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Entity\Categories;
 use AppBundle\Form\CategoriesType;
+use AppBundle\Entity\Programme;
+use AppBundle\Form\ProgrammeType;
 
 /**
  * Categories controller.

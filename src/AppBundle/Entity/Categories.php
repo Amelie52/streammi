@@ -101,11 +101,11 @@ class Categories
     /**
      * Add programme
      *
-     * @param \AppBundle\Entity\Programmes $programme
+     * @param \AppBundle\Entity\Programme $programme
      *
      * @return Categories
      */
-    public function addProgramme(\AppBundle\Entity\Programmes $programme)
+    public function addProgramme(\AppBundle\Entity\Programme $programme)
     {
         $this->programmes[] = $programme;
 
@@ -115,9 +115,9 @@ class Categories
     /**
      * Remove programme
      *
-     * @param \AppBundle\Entity\Programmes $programme
+     * @param \AppBundle\Entity\Programme $programme
      */
-    public function removeProgramme(\AppBundle\Entity\Programmes $programme)
+    public function removeProgramme(\AppBundle\Entity\Programme $programme)
     {
         $this->programmes->removeElement($programme);
     }

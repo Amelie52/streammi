@@ -120,7 +120,7 @@ class CreneauController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('creneau_index');
+        return $this->redirectToRoute('index');
     }
 
     /**

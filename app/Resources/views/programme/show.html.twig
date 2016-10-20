@@ -1,44 +1,34 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Programme</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ programme.id }}</td>
-            </tr>
-            <tr>
-                <th>Progtitre</th>
-                <td>{{ programme.progTitre }}</td>
-            </tr>
-            <tr>
-                <th>Progduree</th>
-                <td>{% if programme.progDuree %}{{ programme.progDuree|date('H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Progurl</th>
-                <td>{{ programme.progUrl }}</td>
-            </tr>
-            <tr>
-                <th>Progminia</th>
-                <td>{{ programme.progMinia }}</td>
-            </tr>
-        </tbody>
-    </table>
+    {% block nav %}
+        {{ parent() }}
+    {% endblock %}
 
-    <ul>
-        <li>
-            <a href="{{ path('programme_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('programme_edit', { 'id': programme.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+    <div class="container contain-n-creneau">
+        <div class="new-creneau carre_base">
+        <h1>Programme</h1>
+
+            <hr>
+
+            <p>Titre : {{ programme.progTitre }}</p>
+            <p>Durée : {% if programme.progDuree %}{{ programme.progDuree|date('H:i') }}{% endif %}</p>
+            <p>Lien : {{ programme.progUrl }}</p>
+            <p>Miniature : {{ programme.progMinia }}</p>
+
+            <hr>
+
+        <a class="btn btn-default" href="{{ path('index') }}">Revenir à la grille</a>
+
+        <a  class="btn btn-default" href="{{ path('programme_edit', { 'id': programme.id }) }}">Modifier le programme</a>
+
+        {{ form_start(delete_form) }}
+        <input type="submit" id="submit_grey" value="Supprimer">
+        {{ form_end(delete_form) }}
+
+        </div>
+    </div>
+
+
 {% endblock %}

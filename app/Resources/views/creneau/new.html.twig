@@ -1,16 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Creneau creation</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    {% block nav %}
+        {{ parent() }}
+    {% endblock %}
 
-    <ul>
-        <li>
-            <a href="{{ path('creneau_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <div class="container contain-n-creneau">
+        <div class="new-creneau carre_base">
+            <h1>Création d'un nouveau créneau</h1>
+            <div class="formu">
+                {{ form_start(form) }}
+                    {% form_theme (form) 'bootstrap_3_layout.html.twig' %}
+                    {{ form_widget(form) }}
+                    <input type="submit" value="Créer" />
+                {{ form_end(form) }}
+                <a class="btn btn-default" href="{{ path('index') }}">Revenir à la grille</a>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

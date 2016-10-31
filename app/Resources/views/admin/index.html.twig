@@ -1,7 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block body %}
-    <h1>Admin list</h1>
+{% block title %}| Super admin{% endblock %}
+
+{% block h2 %}
+    Super admin
+{% endblock %}
+
+{% block container %}
+    {{ parent() }}
 
     <table>
         <thead>
@@ -14,6 +20,7 @@
         {% for admin in admins %}
             <tr>
                 <td><a href="{{ path('admin_show', { 'id': admin.id }) }}">{{ admin.id }}</a></td>
+                <td>{{ admin.username }}</td>
                 <td>
                     <ul>
                         <li>

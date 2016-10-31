@@ -1,10 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block body %}
+{% block title %}| Programme{% endblock %}
 
-    {% block nav %}
-        {{ parent() }}
-    {% endblock %}
+{% block h2 %}
+    Programme
+{% endblock %}
+
+{% block container %}
+    {{ parent() }}
 
     <div class="container contain-n-creneau">
         <div class="new-creneau carre_base">
@@ -13,14 +16,36 @@
         {{ form_start(edit_form) }}
                 {% form_theme (edit_form) 'bootstrap_3_layout.html.twig' %}
             {{ form_widget(edit_form) }}
+
+                {#ajout#}
+
+                <label for="creneau"> Créneau</label>
+                <select name="creneau">
+                    {% for cre in creneaux %}
+                        Créneau : <option value="{{ cre.id }}">{{ cre.creneauDbt|date('H:i') }}</option>
+                    {% endfor %}
+                </select><br><br>
+                {#<select name="creneau">
+                    {% for cre in creneaux %}
+                        Créneau : <option value="">Sélectionner un autre créneau</option>
+                       <option value="{{ cre.id }}">{{ cre.creneauDbt|date('H:i') }}</option>
+                    {% endfor %}
+                </select><br><br>
+                <select name="creneau">
+                    {% for cre in creneaux %}
+                        Créneau : <option value="">Sélectionner un autre créneau</option>
+                        <option value="{{ cre.id }}">{{ cre.creneauDbt|date('H:i') }}</option>
+                    {% endfor %}
+                </select><br><br>#}
+
+                {#fin ajout#}
+
             <input type="submit" value="Valider" />
         {{ form_end(edit_form) }}
 
                 {{ form_start(delete_form) }}
                     <input type="submit" value="Supprimer">
                 {{ form_end(delete_form) }}
-                <a class="btn btn-default" href="{{ path('index') }}">Revenir à la grille</a>
-                <a class="btn btn-default" href="{{ path('categories_index') }}">Revenir aux categories</a>
             </div>
         </div>
     </div>

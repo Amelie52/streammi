@@ -1,4 +1,26 @@
+/* ------------ base -------------- */
 
+html{
+    position: relative;
+    padding-bottom: 50px;
+}
+
+html, body{
+    min-height:100%;
+}
+
+/* ----- nav -------- */
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+    color: white;
+    background-color: #e94144;
+}
+
+/* ----- end nav ---- */
+
+.glyphicon{
+    margin-right: 10px;
+}
 
 header{
     margin-top: 50px;
@@ -11,7 +33,6 @@ header{
     height: 100px;
     float: left;
     background-size: 75%;
-    
 }
 
 .titres{
@@ -19,33 +40,25 @@ header{
 }
 
 .titre{
-    font-weight: 700;
+    font-weight: 400;
     color: #35393c;
     margin: 0;
 }
 
 .titre_1{
-   color: #ee6f71;
+    color: #ee6f71;
 }
 
 .sous_titre{
-    margin-top: -10px;;
-    margin-bottom: 0;
     margin-top: 0;
 }
 
-.boutons{
+.contain-n-creneau{
     clear: both;
 }
 
-.btn{
-    border: none;
-    margin-top: 50px;
-}
 
-#semaine_suivante{
-    float: right;
-}
+/* --------------------------------- tableau ----------------------------- */
 
 .table{
     margin-top: 30px;
@@ -53,14 +66,12 @@ header{
     text-align: center;
 }
 
-th{
+th {
     color: white;
     text-align: center;
     font-weight:lighter;
     margin:auto;
 }
-
-
 
 .horaires{
     background-color: #35393c;
@@ -71,7 +82,7 @@ th{
 
 .jours{
     background-color: #35393c;
-    
+
 }
 
 .vide{
@@ -83,6 +94,10 @@ th{
     background-color: #ee6f71;
 }
 
+.en_cours a{
+    color: #35393c;
+}
+
 .remplie{
     background-color: #495e73;
 }
@@ -91,14 +106,117 @@ th{
     border: none;
 }
 
-/* ---------- grille --------- */
+/* ---------------------- index - grille des programmes ------------------------------ */
+
+.grille_prog .en_cours, .grille_prog .vide{
+    position: relative;
+    height: 70px;
+}
+
+/*.grille_prog .en_cours p, .grille_prog .vide p{
+    margin: auto;
+    padding:0;
+}*/
+
+.grille_prog .en_cours a, .grille_prog .vide a{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.grille_prog .vide:hover{
+    background-color: #D1D1D1;
+}
+
+.grille_prog .en_cours:hover{
+    background-color: #e94144;
+}
+
+
+.boutons_semaines{
+    clear: both;
+}
+
+.btn{
+    border: none;
+}
+
+#semaine_suivante{
+    float: right;
+}
+
+.boutons_centre{
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.boutons_centre .centre {
+    margin: auto;
+}
+
+.creneau_statut{
+    width: 200px;
+}
+
+.cases_statut{
+    display: flex;
+    border: 1px solid #35393c;
+    margin-bottom: 15px;
+}
+
+.cases_statut p{
+    margin: auto;
+}
+
+.case_vide, .case_en_cours{
+    height: 30px;
+    width: 30px;
+}
+
+.case_vide{
+    background-color: #ebebeb;
+}
+
+.case_en_cours{
+    background-color: #ee6f71;
+}
+
+/* ---------------------- page creneau ------------------------------ */
+
+/* ---------------------------------- footer ------------------------------------ */
+
+footer{
+    position: absolute;
+    width:100%;
+    height:50px;
+    background-color: #35393c;
+    color: white;
+    text-align: center;
+    display: flex;
+    bottom:0;
+}
+
+footer p{
+    margin:auto;
+}
+
+/*
+
+
+
+
+
+
+!* ---------- grille --------- *!
 
 .new-grille{
     margin-right: auto;
     margin-left: auto;
 }
 
-/* ---------- nouveau creneau --------- */
+!* ---------- nouveau creneau --------- *!
 
 .contain-n-creneau{
     display: flex;
@@ -121,17 +239,17 @@ th{
     padding: 20px 30px;
 }
 
-/*.new-creneau input, select{
+!*.new-creneau input, select{
     width: 30%;
     height:35px;
     border-radius: 5px;
-}*/
+}*!
 
-/*.new-creneau select.heures{
+!*.new-creneau select.heures{
     width: 45%;
     height:35px;
     border-radius: 5px;
-}*/
+}*!
 
 .new-creneau input[type="submit"]{
     border-style:none;
@@ -143,7 +261,7 @@ th{
     margin-top: 10px;
 }
 
-/* ---------- show creneau (avec ses programmes) --------- */
+!* ---------- show creneau (avec ses programmes) --------- *!
 
 .show-cren-progr{
     margin: 0 auto;
@@ -154,7 +272,7 @@ th{
     color: white;
 }
 
-/* ---------- Catégories --------- */
+!* ---------- Catégories --------- *!
 
 .catego_tab{
     margin-right: auto;
@@ -169,4 +287,4 @@ th{
 .bb_tab td{
    border-bottom: 1px solid #cecece;
 
-}
+}*/

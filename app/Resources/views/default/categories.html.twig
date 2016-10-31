@@ -1,10 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block body %}
+{% block title %}| Catégories{% endblock %}
 
-    {% block nav %}
-        {{ parent() }}
-    {% endblock %}
+{% block h2 %}
+    Categories
+{% endblock %}
+
+{% block container %}
+    {{ parent() }}
 
     <h1>Categories list  TEEEST</h1>
 

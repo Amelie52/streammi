@@ -1,12 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block body %}
+{% block title %}| Creneau{% endblock %}
 
-    {% block nav %}
-        {{ parent() }}
-    {% endblock %}
+{% block h2 %}
+    Creneau
+{% endblock %}
 
-    <h1>Creneau list</h1>
+{% block container %}
+    {{ parent() }}
 
     <table>
         <thead>

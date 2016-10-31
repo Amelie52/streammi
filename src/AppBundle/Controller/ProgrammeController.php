@@ -114,6 +114,29 @@ class ProgrammeController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($programme);
+
+            // ajout
+
+            $creneau = $em->getRepository('AppBundle\Entity\Creneau')->find($request->request->get('creneau'));
+
+            $c_ps = $this->getDoctrine()->getRepository('AppBundle:Creneau_programme')->findBy(array('creneau' => $creneau->getId()), array('progOrdre' => 'ASC'));
+            $last = 0;
+            foreach ($c_ps as $cps)
+            {
+                $last = $cps->getProgOrdre();
+            }
+            $last++;
+
+            $c_p = new Creneau_programme();
+            $c_p->setCreneau($creneau);
+            $c_p->setProgOrdre($last);
+            $c_p->setProgramme($programme);
+
+            $em->persist($c_p);
+
+            //fin ajout
+
+
             $em->flush();
 
             return $this->redirectToRoute('programme_edit', array('id' => $programme->getId()));
@@ -121,6 +144,7 @@ class ProgrammeController extends Controller
 
         return $this->render('programme/edit.html.twig', array(
             'programme' => $programme,
+            'creneaux' => $this->getDoctrine()->getRepository('AppBundle:Creneau')->findAll(), // ajout
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));

@@ -1,10 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block body %}
+{% block title %}| Grille{% endblock %}
 
-    {% block nav %}
-        {{ parent() }}
-    {% endblock %}
+{% block h2 %}
+    Grille
+{% endblock %}
+
+{% block container %}
+    {{ parent() }}
 
     <div class="container contain-n-creneau">
         <div class="new-creneau carre_base">

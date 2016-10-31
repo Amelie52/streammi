@@ -1,12 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block body %}
+{% block title %}| Grille{% endblock %}
 
-    {% block nav %}
-        {{ parent() }}
-    {% endblock %}
+{% block h2 %}
+    Grille
+{% endblock %}
 
-    <h1>Grille edit</h1>
+{% block container %}
+    {{ parent() }}
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}

@@ -1,83 +1,69 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
+    {% block head %}
         <meta charset="UTF-8" />
-        <title>{% block title %}STREAMMI{% endblock %}</title>
-
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-        {#<link rel="stylesheet" href="{{ asset('assets/css/bootstrap-theme.min.css') }}">#}
+        {# <link rel="stylesheet" href="{{ asset('assets/css/bootstrap-theme.min.css') }}">#}
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200i,300i,400,700') }}">
-        {% block stylesheets %}{% endblock %}
-
-
+        <title>Streammi {% block title %}{% endblock %}</title>
         {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />#}
-    </head>
-    <body>
+    {% endblock %}
+</head>
 
-        {% block body %}
+<body>
 
-            {% block nav %}
-
-            <nav class="navbar navbar-default navbar-static-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-
-                    </div>
-                    <div id="navbar" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav">
-                            <li><a href="{{ path('index') }}"><span class="glyphicon glyphicon-th"></span> Grille</a></li>
-                            <li><a href="{{ path('categories_index') }}"><span class="glyphicon glyphicon-tags"></span> Catégories</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
-            {% endblock %}
-
-
+<nav class="navbar navbar-default navbar-static-top">
+    {% block nav %}
         <div class="container">
-                {% block container %}
-                {% endblock %}
-        </div>
-
-
-        <div class="container">
-            {% block header %}
-                <header>
-                    <div class="logo"></div>
-                    <div class="titres">
-                        <h1 class="titre">STREAMMI<span class="titre_1">ADMIN</span></h1>
-                        {#<h2 class="sous_titre">Grille des programmes</h2>#}
-                    </div>
-                </header>
-            {% endblock %}
-
-            {% block buttonNext %}
-
-                <div class="boutons">
-                    <a class="btn btn-default" role="button">Programme Semaine 1</a>
-                    <a class="btn btn-default" role="button" id="semaine_suivante" href="semaine_suivante.html" >Semaine Suivante</a>
-                </div>
-
-            {% endblock %}
-
-            <div class="table-responsive">
-            {% block grille %}
-
-            {% endblock %}
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
             </div>
-        {% endblock %}
-    </div>
-        {% block javascripts %}
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-            <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-        {% endblock %}
-    </body>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ path('index') }}"><span class="glyphicon glyphicon-th"> </span>Grille</a></li>
+                    <li><a href="{{ path('categories_index') }}"><span class="glyphicon glyphicon-tags"> </span>Catégories</a></li>
+                </ul>
+                <ul class="nav navbar-nav pull-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-film"> </span>TV</a></li>
+                    <li><a href="http://www.youtube.com" target="_blank"><span class="glyphicon glyphicon-triangle-right"> </span>YouTube</a></li>
+                    <li><a href="{{ path('admin_index') }}"><span class="glyphicon glyphicon-user"> </span>Super admin</a></li>
+                    <li><a href="../logout"><span class="glyphicon glyphicon-log-out"> </span>logout</a></li>
+                </ul>
+            </div>
+        </div>
+    {% endblock %}
+</nav>
+
+<div class="container">
+    {% block container %}
+        <header>
+            {% block header %}
+                <div class="logo"></div>
+                <div class="titres">
+                    <h1 class="titre">STREAMMI<span class="titre_1">ADMIN</span></h1>
+                    <h2 class="sous_titre">{% block h2 %}{% endblock %}</h2>
+                </div>
+            {% endblock %}
+        </header>
+    {% endblock %}
+</div>
+
+<footer>
+    {% block footer %}
+        <p>&copy; Copyright 2016 by Prism.</p>
+    {% endblock %}
+</footer>
+
+{% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+{% endblock %}
+</body>
 </html>

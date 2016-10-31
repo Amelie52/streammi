@@ -1,21 +1,13 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block body %}
-    {% block nav %}
-        {{ parent() }}
-    {% endblock %}
+{% block title %}| Categories{% endblock %}
 
+{% block h2 %}
+    Categories
+{% endblock %}
 
-
-    <div class="container">
-
-        <header class="container">
-            <div class="logo"></div>
-            <div class="titres">
-                <h1 class="titre">STREAMMI<span class="titre_1">ADMIN</span></h1>
-                <h2 class="sous_titre">Liste des catégories</h2>
-            </div>
-        </header>
+{% block container %}
+    {{ parent() }}
 
         <div class="carre_base"><br>
 
@@ -45,5 +37,5 @@
 
         <a class="btn btn-default new-grille" href="{{ path('categories_new') }}">Créer une nouvelle catégorie</a>
         </div>
-    </div>
+
 {% endblock %}

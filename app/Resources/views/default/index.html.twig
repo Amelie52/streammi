@@ -1,122 +1,62 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block body %}
+{% block title %}| Accueil{% endblock %}
 
+{% block h2 %}
+    Grille des programmes
+{% endblock %}
 
-    {#{% for grille in grilles %}#}
-        {#{% for creneau in grille.creneau %}#}
-            {#{{ dump(creneau) }}#}
-            {#<p>bjr</p>#}
-        {#{% endfor %}#}
-    {#{% endfor %}#}
+{% block container %}
+    {{ parent() }}
 
-    {% block nav %}
-        {{ parent() }}
-    {% endblock %}
-
-    <div class="container">
-
-        <header>
-            <div class="logo"></div>
-            <div class="titres">
-                <h1 class="titre">STREAMMI<span class="titre_1">ADMIN</span></h1>
-                <h2 class="sous_titre">Grille des programmes</h2>
-            </div>
-        </header>
-
-        <div class="boutons">
-            <a class="btn btn-default" role="button">Programme Semaine 1</a>
-            <a class="btn btn-default" role="button" id="semaine_suivante" href="#" >Semaine Suivante</a>
-        </div>
-
-        <div class="table-responsive">
-            <table class="table" >
-
-                {% for grille in grilles %}
-                <tr class="ligne">
-                    <th class="horaires">{% if grille.grilleDate %}{{ grille.grilleDate|date('d-m-Y') }}{% endif %}</th>
-                    {% for creneau in grille.creneau %}
-                    <td class="vide">
-                        {% if creneau.creneauDbt %}{{ creneau.creneauDbt|date('H:i') }}{% endif %}<br>
-                        <a href="{{ path('creneau_show', { 'id': creneau.id }) }}">Voir le créneau</a>
-                    </td>
-                    {% endfor %}
-                </tr>
-                {% endfor %}
-
-            </table>
-        </div>
-
-        <a class="btn btn-default new-grille" href="{{ path('grille_new') }}">Creer une nouvelle grille</a>
-        <a class="btn btn-default new-grille" href="{{ path('creneau_new') }}">Creer un nouveau créneau</a>
-        <a class="btn btn-default new-grille" href="{{ path('programme_new') }}">Ajouter un programme</a>
-
-
+    <div class="boutons_semaines">
+        <a class="btn btn-default" role="button">Programme Semaine 1</a>
+        <a class="btn btn-default" role="button" id="semaine_suivante" href="#" >Semaine Suivante</a>
     </div>
 
-    {#{% for grille in grilles %}
-    <table>
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>date grille</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
+    <div class="table-responsive">
+        <table class="table grille_prog" >
 
-            <tr>
-                <td><a href="{{ path('grille_show', { 'id': grille.id }) }}">{{ grille.id }}</a></td>
-                <td>{% if grille.grilleDate %}{{ grille.grilleDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('grille_show', { 'id': grille.id }) }}">Voir</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('grille_edit', { 'id': grille.id }) }}">Editer</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-        {% for creneau in grille.creneau %}
-        <table>
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Creneaudbt</th>
-                <th>Creneaufin</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><a href="{{ path('creneau_show', { 'id': creneau.id }) }}">{{ creneau.id }}</a></td>
-                    <td>{% if creneau.creneauDbt %}{{ creneau.creneauDbt|date('H:i:s') }}{% endif %}</td>
-                    <td>{% if creneau.creneauFin %}{{ creneau.creneauFin|date('H:i:s') }}{% endif %}</td>
-                    <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('creneau_show', { 'id': creneau.id }) }}">Voir le créneau</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('creneau_edit', { 'id': creneau.id }) }}">Modifier le créneau</a>
-                            </li>
-                        </ul>
-                    </td>
+            {% for grille in grilles %}
+                <tr class="ligne">
+                    <th class="horaires">{% if grille.grilleDate %}{{ grille.grilleDate|date('d/m/Y') }}{% endif %}</th>
+                    {% for creneau in grille.creneau %}
+                        {% if creneau.creneauProgramme|length>0 %}
+                            <td class="en_cours">
+                        {% else %}
+                            <td class="vide">
+                        {% endif %}
+                        <p>
+                            {% if creneau.creneauDbt %}{{ creneau.creneauDbt|date('H') }}h{{ creneau.creneauDbt|date('i') }}{% endif %}
+                            -
+                            {% if creneau.creneauFin %}{{ creneau.creneauFin|date('H') }}h{{ creneau.creneauFin|date('i') }}{% endif %}
+                        </p>
+                        <a href="{{ path('creneau_show', { 'id': creneau.id }) }}"></a>
+                        </td>
+                    {% endfor %}
                 </tr>
+            {% endfor %}
 
-            </tbody>
         </table>
-        {% endfor %}
+    </div>
 
+    <div class="creneau_statut">
+        <div class="cases_statut">
+            <div class="case_vide"></div>
+            <p>Créneaux vide</p>
+        </div>
+        <div class="cases_statut">
+            <div class="case_en_cours"></div>
+            <p>Créneaux en cours</p>
+        </div>
+    </div>
 
-        <br>
-        <hr>
-    {% endfor %}#}
-
+    <div class="boutons_centre">
+        <div class="centre">
+            <a class="btn btn-default new-grille" href="{{ path('grille_new') }}">Creer une nouvelle grille</a>
+            <a class="btn btn-default new-grille" href="{{ path('creneau_new') }}">Creer un nouveau créneau</a>
+            {#<a class="btn btn-default new-grille" href="{{ path('programme_new') }}">Ajouter un programme</a>#}
+        </div>
+    </div>
 
 {% endblock %}

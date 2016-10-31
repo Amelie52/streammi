@@ -1,14 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block body %}
+{% block title %}| Programme{% endblock %}
 
-    {% block nav %}
-        {{ parent() }}
-    {% endblock %}
+{% block h2 %}
+    Programme - {{ programme.progTitre }}
+{% endblock %}
+
+{% block container %}
+    {{ parent() }}
 
     <div class="container contain-n-creneau">
         <div class="new-creneau carre_base">
-        <h1>Programme</h1>
 
             <hr>
 
@@ -18,8 +20,6 @@
             <p>Miniature : {{ programme.progMinia }}</p>
 
             <hr>
-
-        <a class="btn btn-default" href="{{ path('index') }}">Revenir à la grille</a>
 
         <a  class="btn btn-default" href="{{ path('programme_edit', { 'id': programme.id }) }}">Modifier le programme</a>
 

@@ -1,16 +1,44 @@
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
-{% block body %}
+{% block title %}| Creneau{% endblock %}
 
-    {% block nav %}
-        {{ parent() }}
-    {% endblock %}
+{% block h2 %}
+    Creneau de {% if creneau.creneauDbt %}{{ creneau.creneauDbt|date('H') }}h{{ creneau.creneauDbt|date('i') }}{% endif %} à {% if creneau.creneauFin %}{{ creneau.creneauFin|date('H') }}h{{ creneau.creneauFin|date('i') }}{% endif %}
+{% endblock %}
+
+{% block container %}
+    {{ parent() }}
 
     <div class="container contain-n-creneau">
         <div class="new-creneau carre_base">
-        <h1>Creneau de {% if creneau.creneauDbt %}{{ creneau.creneauDbt|date('H:i') }}{% endif %}h à {% if creneau.creneauFin %}{{ creneau.creneauFin|date('H:i') }}{% endif %}h</h1>
-
+            {#rajouter#}
     <hr>
+
+            <div class="contain-n-creneau">
+                <div class="new-creneau carre_base">
+
+                    <h2>Ajouter un programme</h2>
+
+                    <div class="formu">
+                        {{ form_start(form) }}
+                        {% form_theme (form) 'bootstrap_3_layout.html.twig' %}
+                        {{ form_widget(form) }}
+
+                        <label for="creneau"> Créneau</label>
+                        <select name="creneau">
+                            {% for cre in creneaux %}
+                                Créneau : <option value="{{ cre.id }}">{{ cre.creneauDbt|date('H:i') }}</option>
+                            {% endfor %}
+                        </select><br><br>
+
+                        <input type="submit" value="Créer" />
+                        {{ form_end(form) }}
+
+                    </div>
+                </div>
+            </div>
+    <hr>
+            {#fin rajout#}
 
         <h2>Liste des programmes</h2>
 
@@ -37,7 +65,7 @@
                     <td>{{ programme.programme.progUrl }}</td>
                     {#<td>{{ programme.programme.progMinia }}</td>#}
                     <td>
-                       <a href="{{ path('programme_show', { 'id': programme.programme.id }) }}">Voir</a><br>
+                       {#<a href="{{ path('programme_show', { 'id': programme.programme.id }) }}">Voir</a><br>#}
                        <a href="{{ path('programme_edit', { 'id': programme.programme.id }) }}">editer</a>
                     </td>
                 </tr>
@@ -48,11 +76,10 @@
 
 
     <hr>
-                <a class="btn btn-default" href="{{ path('index') }}">Revenir à la grille</a>
 
                 <a  class="btn btn-default" href="{{ path('creneau_edit', { 'id': creneau.id }) }}">Modifier le créneau</a>
 
-                <a class="btn btn-default new-grille" href="{{ path('programme_new') }}">Ajouter un programme</a>
+                <a class="btn btn-default new-grille" href="{{ path('programme_new') }}">Ajouter un programme</a><br>
 
                 {{ form_start(delete_form) }}
                 <input type="submit" id="submit_grey" value="Supprimer">

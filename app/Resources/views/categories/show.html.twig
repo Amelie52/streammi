@@ -9,67 +9,64 @@
 {% block container %}
     {{ parent() }}
 
-    <div class="container contain-n-creneau">
+    <div class="contain-n-creneau">
         <div class="new-creneau carre_base">
-        <h1>Categories</h1>
-
-        <table class="catego_tab prog_catego_tab bb_tab">
-            <thead>
-                <tr>
-                    <th class="horaires">Libellé</th>
-                    <th class="horaires">Video</th>
-                    <th class="horaires">Synthé</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>{{ category.cateLibelle }}</td>
-                    <td>{{ category.cateVideo }}</td>
-                    <td>{{ category.cateSynthe }}</td>
-                </tr>
-            </tbody>
-        </table>
-            <br>
-
-            {% if category.programme|length>0 %}
-
-        <h2>Programmes associés à la catégorie</h2>
-
-
+            <h1>Categories</h1>
 
             <table class="catego_tab prog_catego_tab bb_tab">
                 <thead>
                     <tr>
-                        <th class="horaires">Titre</th>
-                        <th class="horaires">Actions</th>
+                        <th class="horaires">Libellé</th>
+                        <th class="horaires">Video</th>
+                        <th class="horaires">Synthé</th>
                     </tr>
                 </thead>
-                {% for programme in category.programme %}
                 <tbody>
                     <tr>
-                        <td>{{ programme.progTitre }}</td>
-                        <td>
-                            <a href="{{ path('programme_show', { 'id': programme.id }) }}">Voir</a><br>
-                            <a href="{{ path('programme_edit', { 'id': programme.id }) }}">Modifier</a>
-                        </td>
+                        <td>{{ category.cateLibelle }}</td>
+                        <td>{{ category.cateVideo }}</td>
+                        <td>{{ category.cateSynthe }}</td>
                     </tr>
                 </tbody>
-            {#{dump(categorie)}#}
-
-        {% endfor %}
-
-
-                {% else %}
-                {{ form_start(delete_form) }}
-                <input type="submit" id="submit_grey" value="Supprimer">
-                {{ form_end(delete_form) }}<br>
-
             </table>
-            {% endif %}
+                <br>
+
+                {% if category.programme|length>0 %}
+
+            <h2>Programmes associés à la catégorie</h2>
 
 
-            <a class="btn btn-default" href="{{ path('categories_index') }}">Revenir aux categories</a><br><br>
 
+                <table class="catego_tab prog_catego_tab bb_tab">
+                    <thead>
+                        <tr>
+                            <th class="horaires">Titre</th>
+                            <th class="horaires">Actions</th>
+                        </tr>
+                    </thead>
+
+                    {% for programme in category.programme %}
+                    <tbody>
+                        <tr>
+                            <td>{{ programme.progTitre }}</td>
+                            <td>
+                                <a href="{{ path('programme_show', { 'id': programme.id }) }}">Voir</a><br>
+                                <a href="{{ path('programme_edit', { 'id': programme.id }) }}">Modifier</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                {#{dump(categorie)}#}
+
+                    {% endfor %}
+
+
+                    {% else %}
+                    {{ form_start(delete_form) }}
+                    <input type="submit" id="submit_grey" value="Supprimer">
+                    {{ form_end(delete_form) }}<br>
+
+                </table>
+                {% endif %}
 
         </div>
     </div>

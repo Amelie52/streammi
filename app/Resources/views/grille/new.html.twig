@@ -3,7 +3,7 @@
 {% block title %}| Grille{% endblock %}
 
 {% block h2 %}
-    Grille
+    Création de grille
 {% endblock %}
 
 {% block container %}
@@ -11,15 +11,12 @@
 
     <div class="container contain-n-creneau">
         <div class="new-creneau carre_base">
-            <h1>Grille creation</h1>
                 <div class="formu">
                     {{ form_start(form) }}
                     {% form_theme (form) 'bootstrap_3_layout.html.twig' %}
                         {{ form_widget(form) }}
                         <input type="submit" value="Créer" />
                     {{ form_end(form) }}
-
-                    <a class="btn btn-default" href="{{ path('index') }}">Revenir à la grille</a>
                 </div>
         </div>
     </div>

@@ -3,7 +3,7 @@
 {% block title %}| Creneau{% endblock %}
 
 {% block h2 %}
-    Creneau
+    Edition du créneau de {% if creneau.creneauDbt %}{{ creneau.creneauDbt|date('H') }}h{{ creneau.creneauDbt|date('i') }} à {{ creneau.creneauFin|date('H') }}h{{ creneau.creneauFin|date('i') }}{% endif %}
 {% endblock %}
 
 {% block container %}
@@ -11,7 +11,6 @@
 
 <div class="container contain-n-creneau">
     <div class="new-creneau carre_base">
-    <h2>Edition du créneau de {% if creneau.creneauDbt %}{{ creneau.creneauDbt|date('H:i') }}{% endif %}</h2>
         <div class="formu">
             {{ form_start(edit_form) }}
                 {% form_theme (edit_form) 'bootstrap_3_layout.html.twig' %}
@@ -23,7 +22,6 @@
                 <input type="submit" value="Supprimer">
             {{ form_end(delete_form) }}
 
-            <a class="btn btn-default" href="{{ path('index') }}">Revenir à la grille</a>
         </div>
         </div>
     </div>

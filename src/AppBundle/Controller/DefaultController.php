@@ -57,6 +57,27 @@ class DefaultController extends Controller
         $form = $this->createForm('AppBundle\Form\ProgrammeType', $programme);
         $form->handleRequest($request);
 
+        //ajout pour bloquer creneau
+        /*$dateFrom = new DateTime($this->getCreneauDbt($creneau));
+        $dateNow = new DateTime($this->getCreneauFin($creneau));
+        $interval = $dateNow->diff($dateFrom);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($interval);
+
+        $dureeprog = $this->getDoctrine()->getRepository('AppBundle:Programme')->findAll();
+        if(isset($dureeprog)){
+            $lastduree = 0;
+            foreach ($dureeprog as $dp)
+            {
+                $lastduree = $dp->getProgDuree();
+            }
+            $lastduree++;
+            return $lastduree;
+        }*/
+
+        //fin ajout
+
+
         if ($form->isSubmitted()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($programme);

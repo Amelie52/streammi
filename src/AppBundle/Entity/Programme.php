@@ -45,7 +45,7 @@ class Programme
      *
      * @ORM\Column(name="prog_duree", type="time")
      */
-    private $progDuree;
+    private $progDuree; // modif en date time ?
 
     /**
      * @var string

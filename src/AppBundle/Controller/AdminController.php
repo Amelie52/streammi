@@ -66,7 +66,7 @@ class AdminController extends Controller
 
             $this->sendMailAdmin($password, $newAdmin);
 
-            return $this->redirectToRoute('admin_show', array('id' => $newAdmin->getId()));
+            return $this->redirectToRoute('admin_index', array('id' => $newAdmin->getId()));
         }
 
         return $this->render('admin/new.html.twig', array(

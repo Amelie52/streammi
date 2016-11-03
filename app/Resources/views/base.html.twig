@@ -9,10 +9,29 @@
         <link rel="stylesheet" href="{{ asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200i,300i,400,700') }}">
         <title>Streammi {% block title %}{% endblock %}</title>
         {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />#}
+        {#<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>#}
+      {#  <script>
+
+            /*
+            var customInterpolationApp = angular.module('customInterpolationApp', []);
+
+            customInterpolationApp.config(function($interpolateProvider) {
+                $interpolateProvider.startSymbol('{[');
+                $interpolateProvider.endSymbol('}]');
+            });
+
+            customInterpolationApp.controller('DemoController', function() {
+                this.label = "This binding is brought you by // interpolation symbols.";
+            });*/
+            angular.module('myApp', [], function($interpolateProvider){
+                $interpolateProvider.endSymbol(']]');
+                $interpolateProvider.startSymbol('[[');
+            });
+        </script>#}
     {% endblock %}
 </head>
 
-<body>
+<body> {#ng-app='myApp'#}
 
 <nav class="navbar navbar-default navbar-static-top">
     {% block nav %}

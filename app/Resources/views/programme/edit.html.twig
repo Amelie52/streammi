@@ -14,7 +14,7 @@
         <h1>Modifier un programme</h1>
             <div class="formu">
         {{ form_start(edit_form) }}
-                {% form_theme (edit_form) 'bootstrap_3_layout.html.twig' %}
+                {% form_theme(edit_form) 'bootstrap_3_layout.html.twig' %}
             {{ form_widget(edit_form) }}
 
                 {#ajout#}
@@ -25,19 +25,6 @@
                         Créneau : <option value="{{ cre.id }}">{{ cre.creneauDbt|date('H:i') }}</option>
                     {% endfor %}
                 </select><br><br>
-                {#<select name="creneau">
-                    {% for cre in creneaux %}
-                        Créneau : <option value="">Sélectionner un autre créneau</option>
-                       <option value="{{ cre.id }}">{{ cre.creneauDbt|date('H:i') }}</option>
-                    {% endfor %}
-                </select><br><br>
-                <select name="creneau">
-                    {% for cre in creneaux %}
-                        Créneau : <option value="">Sélectionner un autre créneau</option>
-                        <option value="{{ cre.id }}">{{ cre.creneauDbt|date('H:i') }}</option>
-                    {% endfor %}
-                </select><br><br>#}
-
                 {#fin ajout#}
 
             <input type="submit" value="Valider" />

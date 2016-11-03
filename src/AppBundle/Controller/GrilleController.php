@@ -51,7 +51,7 @@ class GrilleController extends Controller
             $em->persist($grille);
             $em->flush();
 
-            return $this->redirectToRoute('grille_show', array('id' => $grille->getId()));
+            return $this->redirectToRoute('index', array('id' => $grille->getId()));
         }
 
         return $this->render('grille/new.html.twig', array(

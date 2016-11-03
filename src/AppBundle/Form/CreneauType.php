@@ -16,8 +16,12 @@ class CreneauType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('creneauDbt', TimeType::class)
-            ->add('creneauFin', TimeType::class)
+            ->add('creneauDbt', TimeType::class, array(
+                'label'=>'Début du créneau'
+            ))
+            ->add('creneauFin', TimeType::class, array(
+                'label'=>'fin du créneau (1h30 conseillé)'
+            ))
             ->add('categorie')
             ->add('grille')
         ;

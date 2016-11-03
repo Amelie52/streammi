@@ -9,9 +9,8 @@
 {% block container %}
     {{ parent() }}
 
-    <div class="contain-n-creneau">
+    <div class="contain-n-creneau col-md-12">
         <div class="new-creneau carre_base">
-            <h1>Categories</h1>
 
             <table class="catego_tab prog_catego_tab bb_tab">
                 <thead>
@@ -24,50 +23,36 @@
                 <tbody>
                     <tr>
                         <td>{{ category.cateLibelle }}</td>
-                        <td>{{ category.cateVideo }}</td>
-                        <td>{{ category.cateSynthe }}</td>
+                        <td><iframe width="560" height="315" src="{{ category.cateVideo }}" frameborder="0" allowfullscreen></iframe></td>
+                        <td class="col_synthe_catego"><div class="synthe_catego" style="background-color: rgb({{ category.cateSynthe }});"></div></td>
                     </tr>
                 </tbody>
             </table>
                 <br>
+        </div>
+    </div>
 
-                {% if category.programme|length>0 %}
+    <div class="col-md-12 prog_catego">
+
+        {% if category.programme|length>0 %}
 
             <h2>Programmes associés à la catégorie</h2>
 
 
+            <ul>
+                {% for programme in category.programme %}<li>{{ programme.progTitre }} | <a href="{{ path('programme_show', { 'id': programme.id }) }}">Voir</a> | <a href="{{ path('programme_edit', { 'id': programme.id }) }}">Modifier</a></li>  {% endfor %}
+            </ul>
 
-                <table class="catego_tab prog_catego_tab bb_tab">
-                    <thead>
-                        <tr>
-                            <th class="horaires">Titre</th>
-                            <th class="horaires">Actions</th>
-                        </tr>
-                    </thead>
+            {#{dump(categorie)}#}
 
-                    {% for programme in category.programme %}
-                    <tbody>
-                        <tr>
-                            <td>{{ programme.progTitre }}</td>
-                            <td>
-                                <a href="{{ path('programme_show', { 'id': programme.id }) }}">Voir</a><br>
-                                <a href="{{ path('programme_edit', { 'id': programme.id }) }}">Modifier</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                {#{dump(categorie)}#}
+        {% else %}
 
-                    {% endfor %}
+            {{ form_start(delete_form) }}
+            <input class="btn-default btn marge_btn" type="submit" id="submit_grey" value="Supprimer">
+            {{ form_end(delete_form) }}<br>
 
+        {% endif %}
 
-                    {% else %}
-                    {{ form_start(delete_form) }}
-                    <input type="submit" id="submit_grey" value="Supprimer">
-                    {{ form_end(delete_form) }}<br>
-
-                </table>
-                {% endif %}
-
-        </div>
     </div>
+
 {% endblock %}

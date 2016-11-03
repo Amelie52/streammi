@@ -3,7 +3,7 @@
 {% block title %}| Categories{% endblock %}
 
 {% block h2 %}
-    Categories
+    Création d'une catégorie
 {% endblock %}
 
 {% block container %}
@@ -11,15 +11,14 @@
 
     <div class="container contain-n-creneau">
         <div class="new-creneau carre_base">
-        <h1>Categories creation</h1>
             <div class="formu">
                 {{ form_start(form) }}
                         {% form_theme (form) 'bootstrap_3_layout.html.twig' %}
                     {{ form_widget(form) }}
-                    <input type="submit" value="Créer" />
+                    <input class="btn btn-default marge_btn" type="submit" value="Créer" />
                 {{ form_end(form) }}
 
-                <a class="btn btn-default" href="{{ path('categories_index') }}">Revenir aux categories</a>
+                <a class="btn btn-default marge_btn" href="{{ path('categories_index') }}">Revenir aux categories</a>
             </div>
         </div>
     </div>

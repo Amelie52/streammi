@@ -16,7 +16,10 @@ class GrilleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('grilleDate', DateType::class)
+            ->add('grilleDate', DateType::class, array(
+                'label'=>'Date de la grille',
+                'format' => 'dd-MM-yyyy'
+            ))
         ;
     }
     

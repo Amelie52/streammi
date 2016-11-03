@@ -9,6 +9,14 @@ html, body{
     min-height:100%;
 }
 
+.marge_btn{
+    margin-bottom: 20px;
+}
+
+.carre_base{
+    clear: both;
+}
+
 /* ----- nav -------- */
 
 .navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
@@ -78,6 +86,10 @@ th {
     vertical-align: middle !important;
     min-width: 80px;
     padding: 10px;
+}
+
+.horaires a{
+    color: white;
 }
 
 .jours{
@@ -324,6 +336,33 @@ th {
     }
 }
 
+/* ---------------------- edition creneau ------------------------------ */
+
+.synthe_catego{
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    padding:15px;
+}
+
+.catego_tab td{
+    padding: 15px;
+    border: 1px solid #cecece;
+
+}
+
+.catego_tab{
+    margin:0 auto;
+}
+
+.new_catego{
+    margin: 40px 0;
+}
+
+.carre_base{
+    text-align: center;
+}
+
 /* ---------------------- page admin ------------------------------ */
 
 .container_login{
@@ -369,6 +408,101 @@ th {
     background-color: white;
     border-radius: 5px;
 }
+
+.list_admin{
+    clear: both;
+}
+
+/* ---------------------- show catego ------------------------------ */
+
+.prog_catego h2{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.prog_catego ul{
+    margin-bottom: 20px;
+}
+
+/* ---------------------- tv ------------------------------ */
+
+.clock {
+    border: 5px solid #FFF;
+    border-radius: 100%;
+    display: block;
+    height: 100px;
+    width: 100px;
+    position: fixed;
+    left:1500px;
+    top: 70px;
+}
+.clock .hour {
+    background: #fff;
+    height: 0;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    width: 0;
+    -webkit-transform-origin: 50% 100%;
+    -moz-transform-origin: 50% 100%;
+    -o-transform-origin: 50% 100%;
+    -ms-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    margin: -40px -2px 0;
+    padding: 40px 2px 0;
+}
+.clock .minute {
+    background: #fff;
+    height: 0;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    width: 0;
+    -webkit-transform-origin: 50% 100%;
+    -moz-transform-origin: 50% 100%;
+    -o-transform-origin: 50% 100%;
+    -ms-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    margin: -25px -2px 0;
+    padding: 25px 2px 0;
+}
+
+/*animations insert   */
+#gros {
+    width: 100px;
+    height: 80px;
+    background:#61eb91 ;
+    position: relative;
+    -webkit-animation: gros 7s infinite; /* Chrome, Safari, Opera */
+    animation: gros 7s infinite;
+    -webkit-box-shadow: -13px 17px 63px -20px rgba(0,0,0,0.75);
+    -moz-box-shadow: -13px 17px 63px -20px rgba(0,0,0,0.75);
+    box-shadow: -13px 17px 63px -20px rgba(0,0,0,0.75);
+    z-index: 15;
+}
+#petit {
+    width: 100px;
+    height: 60px;
+    background:#44a867;
+    position: relative;
+    -webkit-animation: petit 7s infinite; /* Chrome, Safari, Opera */
+    animation: petit 7s infinite;
+    z-index: 10;
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes gros {
+    0%    {top: 730px;left: -650px;height:80px;  width: 600px; }
+    30%   {top: 730px;left: 10px;height:80px;  width: 600px; }
+    70%   {top: 730px;left: 10px;height:80px;  width: 600px; }
+    100% {top: 730px;left: 10px;height:70px;   width: 400px;}
+}
+@-webkit-keyframes petit {
+    0%    {top: 730px;left: -650px;height: 60px;  width: 400px; }
+    30%   {top: 730px;left: 10px;height: 60px;  width: 400px; }
+    70%   {top: 730px;left: 10px;height: 60px; width: 400px; }
+    100% {top: 730px;left: 10px;height: 50px;  width: 350px;}
+}
+
 
 
 

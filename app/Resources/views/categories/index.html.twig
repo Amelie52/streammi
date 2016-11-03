@@ -9,7 +9,7 @@
 {% block container %}
     {{ parent() }}
 
-        <div class="carre_base"><br>
+        <div class="carre_base col-md-12"><br>
 
         <table class="catego_tab ">
             <thead>
@@ -24,8 +24,8 @@
             {% for category in categories %}
                 <tr>
                     <td>{{ category.cateLibelle }}</td>
-                    <td>{{ category.cateVideo }}</td>
-                    <td>{{ category.cateSynthe }}</td>
+                    <td><iframe width="560" height="315" src="{{ category.cateVideo }}" frameborder="0" allowfullscreen></iframe></td>
+                    <td class="col_synthe_catego"><div class="synthe_catego" style="background-color: rgb({{ category.cateSynthe }});"></div></td>
                     <td>
                        <a href="{{ path('categories_show', { 'id': category.id }) }}">Voir</a><br>
                        <a href="{{ path('categories_edit', { 'id': category.id }) }}">Editer</a>
@@ -35,7 +35,7 @@
             </tbody>
         </table>
 
-        <a class="btn btn-default new-grille" href="{{ path('categories_new') }}">Créer une nouvelle catégorie</a>
+        <a class="btn btn-default new_catego" href="{{ path('categories_new') }}">Créer une nouvelle catégorie</a>
         </div>
 
 {% endblock %}

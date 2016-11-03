@@ -1,4 +1,3 @@
-{#
 {% extends "base.html.twig" %}
 
 {% block title %}| Grille{% endblock %}
@@ -9,21 +8,18 @@
 
 {% block container %}
     {{ parent() }}
+    <div class="carre_base">
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+        {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }} <br>
+        <input class="btn btn-default marge_btn" type="submit" value="Edit" />
+        {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('grille_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        {{ form_start(delete_form) }}
+        <input class="btn btn-default marge_btn" type="submit" value="Delete">
+        {{ form_end(delete_form) }}
+
+
+    </div>
 {% endblock %}
-#}
+

@@ -15,6 +15,7 @@ use AppBundle\Form\ProgrammeType;
 use AppBundle\Entity\Categories;
 use AppBundle\Form\CategoriesType;
 use AppBundle\Entity\Creneau_programme;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 
 /**
@@ -44,6 +45,29 @@ class DefaultController extends Controller
     }
 
     /**
+     * Lists all Grille entities.
+     *
+     * @Route("/tv", name="tv")
+     * @Method("GET")
+     */
+    public function tvAction()
+    {
+
+        $em = $this->getDoctrine()->getManager();
+
+        $grilles = $em->getRepository('AppBundle:Grille')->findAll();
+
+        return $this->render('default/tv.html.twig', array(
+            'grilles' => $grilles,
+        ));
+
+    }
+
+    public function convertDate(){
+        return $this->date('H')*3600+date('i')*60+date('s');
+    }
+
+    /**
      * Finds and displays a Creneau entity.
      *
      * @Route("/creneau/{id}", name="creneau_show")
@@ -58,22 +82,32 @@ class DefaultController extends Controller
         $form->handleRequest($request);
 
         //ajout pour bloquer creneau
-        /*$dateFrom = new DateTime($this->getCreneauDbt($creneau));
-        $dateNow = new DateTime($this->getCreneauFin($creneau));
-        $interval = $dateNow->diff($dateFrom);
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($interval);
 
-        $dureeprog = $this->getDoctrine()->getRepository('AppBundle:Programme')->findAll();
-        if(isset($dureeprog)){
+        $em = $this->getDoctrine()->getManager();
+
+        //$creneau = $em->getRepository('AppBundle:Creneau')->find(array('id' => $creneau->getId()));
+        //$dateFrom =  $creneau->getCreneauDbt()->convertDate();
+        //$dateNow = $creneau->getCreneauFin()->convertDate();
+        //$dateFrom = $creneauDbt;
+        //$dateNow = new \Da$creneauFin);
+        $debut = $creneau->getCreneauDbt();
+        $dateFrom = convertDate($debut);
+
+        $fin = $creneau->getCreneauFin();
+        $dateNow = convertDate($fin);
+
+        echo '<p>'.$interval = $dateNow - $dateFrom.'</p>';
+        //$em->persist($interval);
+
+        $dureeprog = $em->getRepository('AppBundle:Creneau_programme')->findBy(array('creneau' => $creneau->getId()));
+        if(count($dureeprog) > 0){
             $lastduree = 0;
             foreach ($dureeprog as $dp)
             {
-                $lastduree = $dp->getProgDuree();
+//                echo '<p> dureevideo '.$dp->getProgramme()->getProgDuree()->getTimestamp().'</p>';
+                $lastduree += $dp->getProgramme()->getProgDuree()->getTimestamp();
             }
-            $lastduree++;
-            return $lastduree;
-        }*/
+        }
 
         //fin ajout
 
@@ -112,6 +146,8 @@ class DefaultController extends Controller
             'creneau' => $creneau,
             'delete_form' => $deleteForm->createView(),
             'programme' => $programme,
+            'interval' => $interval,
+            'lastduree' => $lastduree,
             'creneaux' => $this->getDoctrine()->getRepository('AppBundle:Creneau')->findBy(array('id' => $creneau->getId())),
             'form' => $form->createView(),
         ));

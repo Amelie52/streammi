@@ -18,20 +18,27 @@
             {{ form_widget(edit_form) }}
 
                 {#ajout#}
-
                 <label for="creneau"> Créneau</label>
                 <select name="creneau">
                     {% for cre in creneaux %}
-                        Créneau : <option value="{{ cre.id }}">{{ cre.creneauDbt|date('H:i') }}</option>
+
+
+                        Créneau : <option value="{{ cre.id }}">{{ cre.creneauDbt|date('H:i') }}{#{{ cre.grilleDate|date }}#}</option>
                     {% endfor %}
                 </select><br><br>
+
+                {#{% for cre in creneaux %}
+
+                    {{ dump(cre.creneauProgramme.grille) }}
+
+                {% endfor %}#}
                 {#fin ajout#}
 
-            <input type="submit" value="Valider" />
+            <input class="btn btn-default marge_btn" type="submit" value="Valider" />
         {{ form_end(edit_form) }}
 
                 {{ form_start(delete_form) }}
-                    <input type="submit" value="Supprimer">
+                    <input class="btn btn-default marge_btn" type="submit" value="Supprimer">
                 {{ form_end(delete_form) }}
             </div>
         </div>

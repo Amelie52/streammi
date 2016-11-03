@@ -33,15 +33,17 @@
                 {% endfor %}
             </select>
 
-          {#  {% if lastduree|length > interval %}
-#}
+            <p>last duree{{ lastduree }}</p>
+            <p>interval {{ interval }}</p>
+            {% if lastduree < interval %}
+
             <input class="btn btn-default" type="submit" value="Créer" />
 
-      {#      {% else %}
+            {% else %}
 
             <p>Votre créneau est remplie</p>
 
-            {% endif %}#}
+            {% endif %}
 
             {{ form_end(form) }}
 

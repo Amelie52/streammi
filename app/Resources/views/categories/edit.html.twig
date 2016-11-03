@@ -3,7 +3,7 @@
 {% block title %}| Categories{% endblock %}
 
 {% block h2 %}
-    Categories
+    Edition d'une categories
 {% endblock %}
 
 {% block container %}
@@ -16,14 +16,14 @@
             {{ form_start(edit_form) }}
                     {% form_theme (edit_form) 'bootstrap_3_layout.html.twig' %}
                 {{ form_widget(edit_form) }}
-                <input type="submit" value="Valider" />
+                <input class="btn btn-default marge_btn" type="submit" value="Valider" />
             {{ form_end(edit_form) }}
 
                 {{ form_start(delete_form) }}
-                    <input type="submit" value="Supprimer">
+                    <input class="btn btn-default marge_btn" type="submit" value="Supprimer">
                 {{ form_end(delete_form) }}
 
-                <a class="btn btn-default" href="{{ path('categories_index') }}">Revenir aux categories</a>
+                <a class="btn btn-default marge_btn" href="{{ path('categories_index') }}">Revenir aux categories</a>
             </div>
         </div>
     </div>

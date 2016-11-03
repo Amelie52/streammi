@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Creneau_programme;
+use AppBundle\Entity\Grille; //ajout
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -145,6 +146,7 @@ class ProgrammeController extends Controller
         return $this->render('programme/edit.html.twig', array(
             'programme' => $programme,
             'creneaux' => $this->getDoctrine()->getRepository('AppBundle:Creneau')->findAll(), // ajout
+            'grille' => $this->getDoctrine()->getRepository('AppBundle:Grille')->findAll(), // ajout
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));

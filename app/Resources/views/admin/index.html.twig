@@ -9,12 +9,12 @@
 {% block container %}
     {{ parent() }}
 
-
+<div class="col-md-8 list_admin">
     {% for admin in admins %}
         {#<a href="{{ path('admin_show', { 'id': admin.id }) }}">{{ admin.id }}</a>#}
         <ul>
             <li>
-               Nom utilisateur (email) : {{ admin.username }} | <a href="{{ path('admin_edit', { 'id': admin.id }) }}">edit</a>
+                Nom utilisateur (email) : {{ admin.username }} | <a href="{{ path('admin_edit', { 'id': admin.id }) }}">editer</a>
             </li>
         </ul>
     {% endfor %}
@@ -24,5 +24,6 @@
             <a href="{{ path('admin_new') }}">Ajouter un nouvel administrateur</a>
         </li>
     </ul>
+</div>
 
 {% endblock %}

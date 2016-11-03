@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class AdminType extends AbstractType
 {
@@ -16,7 +17,12 @@ class AdminType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email')
+            ->add('email', TextType::class, array(
+        'label'=>'Email de l\'administrateur',
+        'attr'=>array(
+            'placeholder'=>'ex : prenom.nom@etudiant.univ-reims.fr'
+        )
+    ))
         ;
     }
 

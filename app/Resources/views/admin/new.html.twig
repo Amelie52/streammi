@@ -9,15 +9,13 @@
 {% block container %}
     {{ parent() }}
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+    <div class="carre_base">
+        {{ form_start(form) }}
+        {% form_theme (form) 'bootstrap_3_layout.html.twig' %}
+            {{ form_widget(form) }}
+            <input class="marge_btn btn-default btn" type="submit" value="Ajouter" />
+        {{ form_end(form) }}
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_index') }}">Back to the list</a>
-        </li>
-    </ul>
 
 {% endblock %}

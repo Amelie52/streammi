@@ -18,18 +18,12 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('admin_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('admin_edit', { 'id': admin.id }) }}">Edit</a>
-        </li>
-        <li>
+
+            <a href="{{ path('admin_edit', { 'id': admin.id }) }}">Editer</a>
+
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input class="marge_btn btn-default btn" type="submit" value="Supprimer">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
 
 {% endblock %}
